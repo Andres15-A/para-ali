@@ -7,7 +7,8 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio autoplay loop>
+  <!-- Reproductor oculto -->
+  <audio id="miMusica" loop>
     <source src="musica.mp3" type="audio/mpeg">
     Tu navegador no soporta audio.
   </audio>
@@ -32,14 +33,26 @@
         eres lo mejor que me pasó en esta vida.  
         <strong>Te quiero con cada parte de mi alma 💖</strong>
       </p>
-      <button onclick="closeLetter()">Cerrar</button>
+      <button id="closeLetter">Cerrar</button>
     </div>
   </div>
 
   <script>
     const modal = document.getElementById('letterModal');
-    document.getElementById('openLetter').onclick = () => modal.style.display = 'flex';
-    const closeLetter = () => modal.style.display = 'none';
+    const btnOpen = document.getElementById('openLetter');
+    const btnClose = document.getElementById('closeLetter');
+    const musica = document.getElementById('miMusica');
+
+    btnOpen.onclick = () => {
+      modal.style.display = 'flex';
+      musica.play(); // 🎶 inicia la música cuando se abre la carta
+    };
+
+    btnClose.onclick = () => {
+      modal.style.display = 'none';
+      musica.pause(); // 🔇 opcional: pausa la música al cerrar
+      musica.currentTime = 0; // opcional: reinicia el audio
+    };
   </script>
 </body>
 </html>
