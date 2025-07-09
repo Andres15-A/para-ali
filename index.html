@@ -12,6 +12,7 @@
     <source src="musica.mp3" type="audio/mpeg" />
   </audio>
 
+  <!-- Contenido principal -->
   <div class="container">
     <img src="foto1.jpg" alt="Alison" class="alison-img" />
     <h1>Tu amor es mi mayor fortuna</h1>
@@ -21,35 +22,53 @@
 
   <!-- Modal de la carta -->
   <div class="letter-modal" id="letterModal">
-    <div class="animated-bg"></div> <!-- fondo animado -->
     <div class="letter">
       <h2>Para ti, Alison</h2>
       <p>
-        Alison, cada latido mío te pertenece.  
-        Esta carta guarda lo que a veces no me atrevo a decirte en voz alta:  
-        eres lo mejor que me pasó en esta vida.  
+        Alison, cada latido mío te pertenece.<br>
+        Esta carta guarda lo que a veces no me atrevo a decirte en voz alta:<br>
+        eres lo mejor que me pasó en esta vida.<br>
         <strong>Te quiero con cada parte de mi alma 💖</strong>
       </p>
       <button id="closeLetter">Cerrar</button>
     </div>
+
+    <!-- Fuegos artificiales -->
+    <div class="fireworks" id="fireworksContainer"></div>
   </div>
 
+  <!-- Script -->
   <script>
     const modal = document.getElementById('letterModal');
     const btnOpen = document.getElementById('openLetter');
     const btnClose = document.getElementById('closeLetter');
     const musica = document.getElementById('miMusica');
+    const fireworksContainer = document.getElementById('fireworksContainer');
 
     btnOpen.onclick = () => {
       modal.style.display = 'flex';
       musica.play();
+      showFireworks();
     };
 
     btnClose.onclick = () => {
       modal.style.display = 'none';
       musica.pause();
       musica.currentTime = 0;
+      fireworksContainer.innerHTML = '';
     };
+
+    function showFireworks() {
+      for (let i = 0; i < 30; i++) {
+        const spark = document.createElement('div');
+        spark.classList.add('firework');
+        spark.style.left = Math.random() * 100 + '%';
+        spark.style.top = Math.random() * 100 + '%';
+        spark.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+        fireworksContainer.appendChild(spark);
+        setTimeout(() => spark.remove(), 1000);
+      }
+    }
   </script>
 </body>
 </html>
