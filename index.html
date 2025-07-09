@@ -10,27 +10,24 @@
   <!-- Música -->
   <audio id="miMusica" loop>
     <source src="musica.mp3" type="audio/mpeg" />
-    Tu navegador no soporta audio.
   </audio>
 
   <!-- Contenido principal -->
   <div class="container">
     <img src="foto1.jpg" alt="Alison" class="alison-img" />
     <h1>Tu amor es mi mayor fortuna</h1>
-    <p class="frase">
-      Pase lo que pase, mi corazón siempre te elegirá a ti 💖
-    </p>
+    <p class="frase">Pase lo que pase, mi corazón siempre te elegirá a ti 💖</p>
     <button id="openLetter">💌 Leer mi carta</button>
   </div>
 
-  <!-- Modal carta -->
+  <!-- Modal de la carta -->
   <div class="letter-modal" id="letterModal">
     <div class="letter">
       <h2>Para ti, Alison</h2>
       <p>
-        Alison, cada latido mío te pertenece.<br>
-        Esta carta guarda lo que a veces no me atrevo a decirte en voz alta:<br>
-        eres lo mejor que me pasó en esta vida.<br>
+        Alison, cada latido mío te pertenece.  
+        Esta carta guarda lo que a veces no me atrevo a decirte en voz alta:  
+        eres lo mejor que me pasó en esta vida.  
         <strong>Te quiero con cada parte de mi alma 💖</strong>
       </p>
       <button id="closeLetter">Cerrar</button>
@@ -57,10 +54,11 @@
       modal.style.display = 'none';
       musica.pause();
       musica.currentTime = 0;
-      heartsContainer.innerHTML = ''; // limpia los corazones
+      heartsContainer.innerHTML = ''; // Limpia corazones
     };
 
     function generateHearts() {
+      heartsContainer.innerHTML = '';
       for (let i = 0; i < 30; i++) {
         const heart = document.createElement('div');
         heart.className = 'heart';
