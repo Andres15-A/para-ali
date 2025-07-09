@@ -51,6 +51,7 @@ button:hover {
   align-items: center;
   z-index: 999;
   overflow: hidden;
+  flex-direction: column;
 }
 
 .letter {
@@ -93,4 +94,3 @@ button:hover {
     opacity: 0;
   }
 }
-
