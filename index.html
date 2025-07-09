@@ -12,7 +12,6 @@
     <source src="musica.mp3" type="audio/mpeg" />
   </audio>
 
-  <!-- Contenido principal -->
   <div class="container">
     <img src="foto1.jpg" alt="Alison" class="alison-img" />
     <h1>Tu amor es mi mayor fortuna</h1>
@@ -22,6 +21,7 @@
 
   <!-- Modal de la carta -->
   <div class="letter-modal" id="letterModal">
+    <div class="animated-bg"></div> <!-- fondo animado -->
     <div class="letter">
       <h2>Para ti, Alison</h2>
       <p>
@@ -32,41 +32,24 @@
       </p>
       <button id="closeLetter">Cerrar</button>
     </div>
-    <!-- Corazones flotantes -->
-    <div class="hearts" id="heartsContainer"></div>
   </div>
 
-  <!-- Script -->
   <script>
     const modal = document.getElementById('letterModal');
     const btnOpen = document.getElementById('openLetter');
     const btnClose = document.getElementById('closeLetter');
     const musica = document.getElementById('miMusica');
-    const heartsContainer = document.getElementById('heartsContainer');
 
     btnOpen.onclick = () => {
       modal.style.display = 'flex';
       musica.play();
-      generateHearts();
     };
 
     btnClose.onclick = () => {
       modal.style.display = 'none';
       musica.pause();
       musica.currentTime = 0;
-      heartsContainer.innerHTML = ''; // Limpia corazones
     };
-
-    function generateHearts() {
-      heartsContainer.innerHTML = '';
-      for (let i = 0; i < 30; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'heart';
-        heart.style.left = `${Math.random() * 100}%`;
-        heart.style.animationDelay = `${Math.random() * 2}s`;
-        heartsContainer.appendChild(heart);
-      }
-    }
   </script>
 </body>
 </html>
