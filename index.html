@@ -2,57 +2,73 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Para Alison 💘</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Reproductor oculto -->
+  <!-- Música -->
   <audio id="miMusica" loop>
-    <source src="musica.mp3" type="audio/mpeg">
+    <source src="musica.mp3" type="audio/mpeg" />
     Tu navegador no soporta audio.
   </audio>
 
+  <!-- Contenido principal -->
   <div class="container">
     <img src="foto1.jpg" alt="Alison" class="alison-img" />
     <h1>Tu amor es mi mayor fortuna</h1>
     <p class="frase">
       Pase lo que pase, mi corazón siempre te elegirá a ti 💖
     </p>
-
     <button id="openLetter">💌 Leer mi carta</button>
   </div>
 
-  <!-- Carta modal -->
+  <!-- Modal carta -->
   <div class="letter-modal" id="letterModal">
     <div class="letter">
       <h2>Para ti, Alison</h2>
       <p>
-        Alison, cada latido mío te pertenece.  
-        Esta carta guarda lo que a veces no me atrevo a decirte en voz alta:  
-        eres lo mejor que me pasó en esta vida.  
+        Alison, cada latido mío te pertenece.<br>
+        Esta carta guarda lo que a veces no me atrevo a decirte en voz alta:<br>
+        eres lo mejor que me pasó en esta vida.<br>
         <strong>Te quiero con cada parte de mi alma 💖</strong>
       </p>
       <button id="closeLetter">Cerrar</button>
     </div>
+    <!-- Corazones flotantes -->
+    <div class="hearts" id="heartsContainer"></div>
   </div>
 
+  <!-- Script -->
   <script>
     const modal = document.getElementById('letterModal');
     const btnOpen = document.getElementById('openLetter');
     const btnClose = document.getElementById('closeLetter');
     const musica = document.getElementById('miMusica');
+    const heartsContainer = document.getElementById('heartsContainer');
 
     btnOpen.onclick = () => {
       modal.style.display = 'flex';
-      musica.play(); // 🎶 inicia la música cuando se abre la carta
+      musica.play();
+      generateHearts();
     };
 
     btnClose.onclick = () => {
       modal.style.display = 'none';
-      musica.pause(); // 🔇 opcional: pausa la música al cerrar
-      musica.currentTime = 0; // opcional: reinicia el audio
+      musica.pause();
+      musica.currentTime = 0;
+      heartsContainer.innerHTML = ''; // limpia los corazones
     };
+
+    function generateHearts() {
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = `${Math.random() * 100}%`;
+        heart.style.animationDelay = `${Math.random() * 2}s`;
+        heartsContainer.appendChild(heart);
+      }
+    }
   </script>
 </body>
 </html>
